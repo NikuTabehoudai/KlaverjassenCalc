@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="KlaverjassenCalc.MainPage">
+
+	<!-- Base Grid -->
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Row="0" BackgroundColor="#2196F3"/>
+        <Label Text="KlaverjasBlok" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="80*" />
+                <ColumnDefinition Width="20*" />
+            </Grid.ColumnDefinitions>
+            <Button Text="Edit" Command="{Binding OpenEditCommand}" Grid.Column="0" CornerRadius="20" Margin="10" BackgroundColor="AntiqueWhite" BorderColor="Black" BorderWidth="2"/>
+            <Button Text="Reset" Command="{Binding OptionsCommand}" Grid.Column="2" CornerRadius="20" Margin="10" BackgroundColor="AntiqueWhite" BorderColor="Black" BorderWidth="2"/>
+        </Grid>
+        <Frame Grid.Row="1" BackgroundColor="AliceBlue"/>
+
+        <!-- Team Grid-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Spacing="-10" Grid.Column="1">
+                <Label Grid.Column="0" Text="Wij" FontSize="20" HorizontalTextAlignment="Center"/>
+                <Entry  Placeholder="Speler 1" HorizontalTextAlignment="Center"/>
+                <Entry  Placeholder="Speler 2" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            <StackLayout Spacing="-10"  Grid.Column="2">
+                <Label  Text="Zij" FontSize="20" HorizontalTextAlignment="Center"/>
+                <Entry  Placeholder="Speler 1" HorizontalTextAlignment="Center"/>
+                <Entry  Placeholder="Speler 2" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+        </Grid>
+
+        <Frame Grid.Row="2" BackgroundColor="White"/>
+
+
+
+        <!-- Data Grid -->
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition  Width="82*"/>
+                <ColumnDefinition  Width="13*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="1" Padding="0"  ColumnSpacing="0" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+
+                <Frame BorderColor="Black" Grid.Column="0" CornerRadius="0"/>
+                <Frame BorderColor="Black" Grid.Column="1" CornerRadius="0"/>
+                <Frame BorderColor="Black" Grid.Column="2" CornerRadius="0"/>
+                <Frame BorderColor="Black" Grid.Column="4" CornerRadius="0"/>
+                <Frame BorderColor="Black" Grid.Column="5" CornerRadius="0"/>
+
+                <Label Margin="10,0,10,0" Text="Punten" VerticalOptions="Center" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="1" />
+                <Label Margin="10,0,10,0" Text="Roem" VerticalOptions="Center"  FontSize="20" HorizontalTextAlignment="Center" Grid.Column="2" />
+                <Label Margin="10,0,10,0" Text="Punten" VerticalOptions="Center" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="4" />
+                <Label Margin="10,0,10,0" Text="Roem" VerticalOptions="Center" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="5" />
+
+                <!-- Input List -->
+            </Grid>
+            <StackLayout Grid.Row="1" Grid.Column="1" Spacing="0">
+                <ListView x:Name="EmplooyeList" ItemsSource="{Binding InputDataList}" SeparatorVisibility="None" SelectionMode="None" HasUnevenRows="False">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="0"  ColumnSpacing="0" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10*"/>
+                                        <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                        <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="20*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame BorderColor="Black" Grid.Column="0" CornerRadius="0"/>
+                                    <Frame BorderColor="Black" Grid.Column="1" CornerRadius="0"/>
+                                    <Frame BorderColor="Black" Grid.Column="2" CornerRadius="0"/>
+                                    <Frame BorderColor="Black" Grid.Column="4" CornerRadius="0"/>
+                                    <Frame BorderColor="Black" Grid.Column="5" CornerRadius="0"/>
+
+                                    <Label Margin="10,0,10,0" Text="{Binding Ronde}" FontSize="20" HorizontalTextAlignment="Center" VerticalOptions="Center"  Grid.Column="0"  />
+                                    <Label Margin="10,0,10,0" Text="{Binding PuntenWij}" FontSize="20" HorizontalTextAlignment="Center" VerticalOptions="Center"  Grid.Column="1" />
+                                    <Label Margin="10,0,10,0" Text="{Binding RoemWij}" FontSize="20" HorizontalTextAlignment="Center" VerticalOptions="Center"  Grid.Column="2" />
+                                    <Label Margin="10,0,10,0" Text="{Binding PuntenZij}" FontSize="20" HorizontalTextAlignment="Center" VerticalOptions="Center"  Grid.Column="4" />
+                                    <Label Margin="10,0,10,0" Text="{Binding RoemZij}" FontSize="20" HorizontalTextAlignment="Center" VerticalOptions="Center"  Grid.Column="5" />
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+            <Grid Grid.Row="2" Grid.Column="1" Padding="0"  ColumnSpacing="0" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="13*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Frame BorderColor="Black" Grid.Column="0" Grid.Row="0" CornerRadius="0"/>
+                <Frame BorderColor="Black" Grid.Column="1" Grid.Row="0" CornerRadius="0"/>
+                <Frame BorderColor="Black" Grid.Column="2" Grid.Row="0" CornerRadius="0"/>
+                <Frame BorderColor="Black" Grid.Column="4" Grid.Row="0" CornerRadius="0"/>
+                <Frame BorderColor="Black" Grid.Column="5" Grid.Row="0" CornerRadius="0"/>
+
+                <Label Margin="10,0,10,0" Text="Totaal" VerticalOptions="Center" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="0"  />
+                <Label Margin="10,0,10,0" Text="{Binding SubTotaalWijP}" VerticalOptions="Center" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="1" Grid.Row="0"  />
+                <Label Margin="10,0,10,0" Text="{Binding SubTotaalWijR}" VerticalOptions="Center"  FontSize="20" HorizontalTextAlignment="Center" Grid.Column="2" Grid.Row="0"  />
+                <Label Margin="10,0,10,0" Text="{Binding SubTotaalZijP}" VerticalOptions="Center" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="4" Grid.Row="0" />
+                <Label Margin="10,0,10,0" Text="{Binding SubTotaalZijR}" VerticalOptions="Center" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="5" Grid.Row="0" />
+
+                <Frame BorderColor="Black" Grid.Column="0" Grid.Row="1" CornerRadius="0"/>
+                <Frame BorderColor="Black" Grid.Column="1" Grid.Row="1" CornerRadius="0"/>
+                <Frame BorderColor="Black" Grid.Column="4" Grid.Row="1" CornerRadius="0"/>
+                <Label Margin="10,0,10,0" Text="Totaal" VerticalOptions="Center" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="1"  />
+                <Label Margin="10,0,10,0" Text="{Binding TotaalWij}" VerticalOptions="Center" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="1" Grid.Row="1"  />
+                <Label Margin="10,0,10,0" Text="{Binding TotaalZij}" VerticalOptions="Center" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="4" Grid.Row="1" />
+
+
+            </Grid>
+
+
+
+
+        </Grid>
+        <!-- Options -->
+        <!-- Edit Round select -->
+        <ContentView  Grid.Row="2" IsVisible="{Binding RoundSelectVisible}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="90*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="34*"/>
+                    <ColumnDefinition Width="40*"/>
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Column="1"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Grid.Row="1"  BorderColor="Black" BackgroundColor="AliceBlue">
+                    <StackLayout>
+                        <Label Text="Welke Ronde?" FontSize="20" HorizontalOptions="Center" />
+                        <Entry Text="{Binding RondeInputEdit}" Placeholder="0" WidthRequest="50" FontSize="40" HorizontalTextAlignment="center" HorizontalOptions="Center"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition  Width="20*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Text="Edit" Command="{Binding EditRoundChoiceCommand}" Grid.Column="0" BackgroundColor="AntiqueWhite" BorderColor="black" BorderWidth="1" CornerRadius="20"/>
+                            <Button Text="Close" Command="{Binding CloseRoundChoiceCommand}" Grid.Column="1" BackgroundColor="AntiqueWhite" BorderColor="black" BorderWidth="1" CornerRadius="20"/>
+                        </Grid>
+                    </StackLayout>
+
+                </Frame>
+
+            </Grid>
+        </ContentView>
+
+
+        <!-- edit window -->
+             <ContentView Grid.Row="2" IsVisible="{Binding EditWindowVisible}"> 
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="40*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Column="1" Grid.Row="1"  BorderColor="Black" BackgroundColor="AliceBlue" CornerRadius="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="65*"/>
+                            <RowDefinition Height="35*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout>
+                        <Label Grid.Column="0" Text="Ronde" FontSize="20" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="0" Text="{Binding RondeEdit}" FontSize="40" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <Label Grid.Column="1" Text="Punten Wij" FontSize="20" HorizontalTextAlignment="Center"/>
+                        <Entry Grid.Column="1" Text="{Binding PuntenWijEdit}" Placeholder="{Binding PuntenWijPlaceHolderEdit}" FontSize="40" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="2" Text="Punten Zij" FontSize="20" HorizontalTextAlignment="Center"/>
+                        <Entry Grid.Column="2" Text="{Binding PuntenZijEdit}" Placeholder="{Binding PuntenZijPlaceHolderEdit}" FontSize="40" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="3" Text="Roem Wij" FontSize="20" HorizontalTextAlignment="Center"/>
+					    <Entry Grid.Column="3" Text="{Binding RoemWijEdit}" Placeholder="{Binding RoemWijPlaceHolderEdit}" FontSize="40" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="4" Text="Roem Zij" FontSize="20" HorizontalTextAlignment="Center"/>
+					    <Entry Grid.Column="4" Text="{Binding RoemZijEdit}" Placeholder="{Binding RoemZijPlaceHolderEdit}" FontSize="40" HorizontalTextAlignment="Center"/>
+
+                        <Button Text="Edit" Command="{Binding EditCommand}" FontSize="40" Padding="3" Margin="1" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="AntiqueWhite" BorderColor="black" BorderWidth="1" CornerRadius="30"/>
+                        <Button Text="Close" Command="{Binding CloseEditCommand}" FontSize="40" Padding="3"  Margin="1" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" BackgroundColor="AntiqueWhite" BorderColor="black" BorderWidth="1" CornerRadius="30"/>
+                    </Grid>
+                </Frame>
+
+
+            </Grid>
+        </ContentView>
+        
+        <!-- Roem Window-->
+        <ContentView Grid.Row="2" IsVisible="{Binding RoemWindowVisiblity}">
+            <ContentView.Content>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="60*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="6*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Column="2" Grid.Row="1" VerticalOptions="End" BorderColor="Black" BackgroundColor="AliceBlue">
+                    <StackLayout Grid.Row="1" VerticalOptions="End">
+                        <Label Text="Hoeveel Roem?" HorizontalTextAlignment="Center" />
+                        <StackLayout >
+                                <Button Text="20" Command="{Binding OneRoemCommand}" BackgroundColor="AntiqueWhite" BorderColor="black" BorderWidth="1"/>
+                                <Button Text="40" Command="{Binding TwoRoemCommand}" BackgroundColor="AntiqueWhite" BorderColor="black" BorderWidth="1"/>
+                                <Button Text="50" Command="{Binding ThreeRoemCommand}" BackgroundColor="AntiqueWhite" BorderColor="black" BorderWidth="1"/>
+                                <Button Text="70" Command="{Binding FourRoemCommand}" BackgroundColor="AntiqueWhite" BorderColor="black" BorderWidth="1"/>
+                                <Button Text="Close" Command="{Binding RoemCloseCommand}" BackgroundColor="AntiqueWhite" BorderColor="black" BorderWidth="1"/>
+                            </StackLayout>
+                    </StackLayout>
+                    </Frame>
+                </Grid>
+            </ContentView.Content>
+        </ContentView>
+
+        <!-- input inwondow -->
+        <ContentView Grid.Row="2" IsVisible="{Binding InputWindowVisible}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="40*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Column="1" Grid.Row="1"  BorderColor="Black"  BackgroundColor="AliceBlue" CornerRadius="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="65*"/>
+                            <RowDefinition Height="35*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0">
+                            <Label Text="Ronde" FontSize="20" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding RondeInput}" FontSize="40" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <StackLayout  Grid.Column="1">
+                            <Label Text="Punten Wij" FontSize="20" HorizontalTextAlignment="Center"/>
+                            <Label  Text="{Binding PuntenWijInput}" FontSize="40" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <StackLayout  Grid.Column="2">
+                            <Label  Text="Punten Zij" FontSize="20" HorizontalTextAlignment="Center"/>
+                            <Label  Text="{Binding PuntenZijInput}" FontSize="40" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <StackLayout  Grid.Column="3">
+                            <Label  Text="Roem Wij" FontSize="20" HorizontalTextAlignment="Center"/>
+                            <Label  Text="{Binding RoemWijInput}" FontSize="40" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <StackLayout  Grid.Column="4">
+                            <Label  Text="Roem Zij" FontSize="20" HorizontalTextAlignment="Center"/>
+                            <Label  Text="{Binding RoemZijInput}" FontSize="40" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <Button Text="Reset" Command="{Binding ResetInputCommand}" FontSize="35"  Padding="5" Margin="1" Grid.Row="1" Grid.Column="0" BackgroundColor="AntiqueWhite" BorderColor="black" BorderWidth="2" CornerRadius="30"/>
+                        <Button Text="Invoeren" Command="{Binding InputCommand}" FontSize="35" Padding="5" Margin="1" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="AntiqueWhite" BorderColor="black" BorderWidth="2" CornerRadius="30"/>
+                        <Button Text="Close" Command="{Binding CloseInputCommand}" FontSize="35" Padding="5" Margin="1" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" BackgroundColor="AntiqueWhite" BorderColor="black" BorderWidth="2" CornerRadius="30"/>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </ContentView>
+
+        <!-- Result window -->
+        <ContentView Grid.Row="2" IsVisible="{Binding ResultWindowVisible}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="30*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Column="1" Grid.Row="1"  BorderColor="Black"  BackgroundColor="AliceBlue" CornerRadius="5" Padding="10" Margin="5">
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="13*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Frame BorderColor="Black" Grid.Column="0" Grid.Row="1" CornerRadius="0"/>
+                        <Frame BorderColor="Black" Grid.Column="1" Grid.Row="1" CornerRadius="0"/>
+                        <Frame BorderColor="Black" Grid.Column="2" Grid.Row="1" CornerRadius="0"/>
+                        <Frame BorderColor="Black" Grid.Column="4" Grid.Row="1" CornerRadius="0"/>
+                        <Frame BorderColor="Black" Grid.Column="5" Grid.Row="1" CornerRadius="0"/>
+
+                        <Label Text ="Wij" VerticalOptions="Center" FontSize="40" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
+                        <Label Text ="Zij" VerticalOptions="Center" FontSize="40" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2"/>
+
+                        <Label Margin="10,0,10,0" Text="Totaal" VerticalOptions="Center" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="1"  />
+                        <Label Margin="10,0,10,0" Text="{Binding SubTotaalWijP}" VerticalOptions="Center" FontSize="30" HorizontalTextAlignment="Center" Grid.Column="1" Grid.Row="1"  />
+                        <Label Margin="10,0,10,0" Text="{Binding SubTotaalWijR}" VerticalOptions="Center"  FontSize="30" HorizontalTextAlignment="Center" Grid.Column="2" Grid.Row="1"  />
+                        <Label Margin="10,0,10,0" Text="{Binding SubTotaalZijP}" VerticalOptions="Center" FontSize="30" HorizontalTextAlignment="Center" Grid.Column="4" Grid.Row="1" />
+                        <Label Margin="10,0,10,0" Text="{Binding SubTotaalZijR}" VerticalOptions="Center" FontSize="30" HorizontalTextAlignment="Center" Grid.Column="5" Grid.Row="1" />
+
+                        <Frame BorderColor="Black" Grid.Column="0" Grid.Row="2" CornerRadius="0"/>
+                        <Frame BorderColor="Black" Grid.Column="1" Grid.Row="2" CornerRadius="0"/>
+                        <Frame BorderColor="Black" Grid.Column="4" Grid.Row="2" CornerRadius="0"/>
+                        <Label Margin="10,0,10,0" Text="Totaal" VerticalOptions="Center" FontSize="20" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="2"  />
+                        <Label Margin="10,0,10,0" Text="{Binding TotaalWij}" VerticalOptions="Center" FontSize="30" HorizontalTextAlignment="Center" Grid.Column="1" Grid.Row="2"  />
+                        <Label Margin="10,0,10,0" Text="{Binding TotaalZij}" VerticalOptions="Center" FontSize="30" HorizontalTextAlignment="Center" Grid.Column="4" Grid.Row="2" />
+
+
+                        <Button Command="{Binding ResetCommand}" Text="Reset" FontSize="30" Grid.Row="3" Grid.Column="1"  BackgroundColor="AntiqueWhite" BorderColor="Black" CornerRadius="50" BorderWidth="2"/>
+                        <Button Command="{Binding CloseResultCommand}"  Text="Close" FontSize="30" Grid.Row="3" Grid.Column="4"  BackgroundColor="AntiqueWhite" BorderColor="Black" CornerRadius="50" BorderWidth="2"/>
+
+                    </Grid>
+                </Frame>
+            </Grid>
+        </ContentView>
+
+
+        <!-- Options window -->
+        <ContentView Grid.Row="2" IsVisible="{Binding OptionsVisibilty}">
+            <Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="10*"/>
+				<RowDefinition Height="30*"/>
+				<RowDefinition Height="10*"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="20*"/>
+				<ColumnDefinition Width="60*"/>
+				<ColumnDefinition Width="20*"/>
+			</Grid.ColumnDefinitions>
+
+                <Frame Grid.Row="1" Grid.Column="1"  BackgroundColor="AliceBlue" BorderColor="Black" CornerRadius="50">
+                    <Grid ColumnSpacing="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60*"/>
+                            <RowDefinition Height="20*"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Label Text="Invoer Mogelijkheden" HorizontalTextAlignment="Center" FontSize="40"/>
+                            <Label Text="n = Wij NAT" HorizontalTextAlignment="Center" FontSize="30"/>
+                            <Label Text="p = Wij PIT" HorizontalTextAlignment="Center" FontSize="30"/>
+                            <Label Text="0-162" HorizontalTextAlignment="Center" FontSize="30"/>
+                        </StackLayout>
+
+                        <Button Command="{Binding ResetCommand}" Text="Reset" FontSize="40" Grid.Row="1" Grid.Column="0"  BackgroundColor="AntiqueWhite" BorderColor="Black" CornerRadius="50" BorderWidth="2"/>
+                        <Button Command="{Binding CloseCommand}"  Text="Sluiten" FontSize="40" Grid.Row="1" Grid.Column="1"  BackgroundColor="AntiqueWhite" BorderColor="Black" CornerRadius="50" BorderWidth="2"/>
+
+
+                    </Grid>
+                </Frame>
+            </Grid>
+        </ContentView>
+
+        <!-- Input Grid -->
+		<Grid Grid.Row="3">
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+		
+		<!-- Point Grid-->
+			<Grid Grid.Row="0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+                <StackLayout>
+                    <Label Grid.Column="0" Text="Ronde" FontSize="20" HorizontalTextAlignment="Center"/>
+                    <Label Grid.Column="0" Text="{Binding RondeBind}" FontSize="40" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+                <Label Grid.Column="1" Text="Punten Wij" FontSize="20" HorizontalTextAlignment="Center"/>
+				<Entry Grid.Column="1" Text="{Binding PuntenWijBind}" Placeholder="0" FontSize="40" HorizontalTextAlignment="Center"/>
+				<Label Grid.Column="2" Text="Punten Zij" FontSize="20" HorizontalTextAlignment="Center"/>
+				<Entry Grid.Column="2" Text="{Binding PuntenZijBind}" Placeholder="0" FontSize="40" HorizontalTextAlignment="Center"/>
+				<Label Grid.Column="3" Text="Roem Wij" FontSize="20" HorizontalTextAlignment="Center"/>
+                <Button Text="{Binding RoemWijBind}" Command="{Binding RoemWijCommand}" Grid.Column="3" BackgroundColor="Transparent"  FontSize="50" HorizontalOptions="Center" Margin="10"/>
+				<Label Grid.Column="4" Text="Roem Zij" FontSize="20" HorizontalTextAlignment="Center"/>
+                <Button Text="{Binding RoemZijBind}" Command="{Binding RoemZijCommand}" Grid.Column="4" BackgroundColor="Transparent" FontSize="50" HorizontalOptions="Center" Margin="10"/>
+			</Grid>
+			<Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+				<Button Text="{Binding InputText}" FontSize="40" Command="{Binding InputWindowCommand}" Grid.Column="1" BorderColor="Black" BorderWidth="2" CornerRadius="40" BackgroundColor="AntiqueWhite" Margin="5"/>
+			</Grid>
+		</Grid>
+	</Grid>
+
+
+</ContentPage>
+    
